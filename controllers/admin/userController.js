@@ -6,9 +6,9 @@ require("dotenv");
 class usersController {
   static list = async (req, res) => {
     try {
-      let recordData = await User.find().sort({
-        created_at: -1,
-      });
+      let field = req.query.field;
+      let value = req.query.value;
+      let recordData = await User.find({ [field]: value });
       const admin = await Adminauth.find({});
       return res.render("admin/user-list", {
         recordData,
@@ -20,6 +20,7 @@ class usersController {
         .send("Something went wrong please try again later");
     }
   };
+  
   static Approved = async (req, res) => {
     try {
       const data = req.body;

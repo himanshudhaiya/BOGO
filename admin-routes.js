@@ -9,6 +9,10 @@ const termscondition = require("./routes/admin/termscondition");
 const contact = require("./routes/admin/contact");
 const category = require("./routes/admin/category");
 
+const merchantUser = require("./routes/admin/merchantUser");
+const WelcomeSlider_Merchant = require("./routes/admin/welcomeSlider_merchant");
+const deshboardSlider_Merchant = require("./routes/admin/deshboardSlider_merchant");
+
 const AdminRoutes = (app) => {
   app.use("/", main);
   app.use("/admin", auth);
@@ -20,6 +24,11 @@ const AdminRoutes = (app) => {
   app.use("/admin", termscondition);
   app.use("/admin/contact", contact);
   app.use("/admin/category", category);
+
+  app.use("/admin/merchantUser", merchantUser);
+  app.use("/admin/WelcomeSlider_Merchant", WelcomeSlider_Merchant);
+  app.use("/admin/deshboardSlider_Merchant", deshboardSlider_Merchant);
+  
 };
 
 module.exports = AdminRoutes;

@@ -10,6 +10,8 @@ const AuthController = require("../../controllers/app/authController");
 
 router.post("/user_register", AuthController.user_register);
 router.post("/user_login", AuthController.user_login);
+router.post("/user_store", AuthController.user_store);
+router.post("/user_gallery", AuthController.user_gallery);
 
 module.exports = router;
 ``;

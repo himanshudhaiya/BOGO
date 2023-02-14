@@ -5,6 +5,7 @@
   <section class="section">
     <div class="section-body">
       <!--  Users Start-->
+      
       <div class="row">
         <div class="col-12">
           <div class="card">
@@ -16,6 +17,38 @@
                 <h4 class="float-left">Users</h4>
               </div>
             </div>
+            <div class="card-body mt-2">
+              <form id="addsearch">
+                <div class="row">
+                  <select
+                    class="form-control col-3 col-md-3 mx-3"
+                    name="field"
+                    id="field"
+                  >
+                    <option value="roll">Select Fields</option>
+                    <option value="roll">User</option>
+
+                  </select>
+                  <select
+                    class="form-control col-3 col-md-3 mx-3"
+                    name="value"
+                    id="value"
+                  >
+                    <option value="">Select Fields</option>
+                    <option value="Merchant">Merchant</option>
+                    <option value="Influencer">Influencer</option>
+
+                  </select>
+                 
+                  <button
+                    class="btn btn-sm btn-secondary float-right card-text-btn col-1 col-md-1 mx-3"
+                    onclick="search()"
+                  >
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
 
             <div class="card-body">
               <div class="row">
@@ -25,16 +58,10 @@
                       <thead class="t-head">
                         <tr class="text-center">
                           <th>S.NO</th>
-                          <!-- <th>Image</th> -->
                           <th>Name</th>
                           <th>Email</th>
-                          <!-- <th>Mobile</th>
-                          <th>Dob</th>
-                          <th>Dob Time</th>
-                          <th>Gender</th>
-                          <th>City</th>
-                          <th>State</th>
-                          <th>Status</th> -->
+                          
+                          <th>Status</th>
                           <th>Created At</th>
                         </tr>
                       </thead>
@@ -55,6 +82,17 @@
                              
                           </td>
 
+                          <td>
+                            <button
+                              class="btn <%- recordData.approved ? 'bg-success' : 'bg-danger' %> text-white"
+                              data-toggle="modal"
+                              data-model="<%= JSON.stringify(recordData) %>"
+                              id="accept_btn"
+                              style="cursor: pointer"
+                            >
+                              <%- recordData.approved ? 'Active' : 'Inactive' %>
+                            </button>
+                          </td>
                           </td>
                           <td>
                             <%= convertTimeStampToDate(recordData.created_at) %>
@@ -204,5 +242,15 @@ function convertTimeStampToDate(date){
       .fail(function (xhr, status, error) {
         console.log(xhr.responseText);
       });
+  }
+</script>
+
+<script>
+  function search() {
+    // var field = "roll"
+    var field = document.getElementById("field").value;
+    var value = document.getElementById("value").value;
+    // return console.log(field, value);
+    wwindow.location.href = "?field=" + field + "&value=" + value;
   }
 </script>

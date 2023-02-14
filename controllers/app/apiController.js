@@ -129,7 +129,6 @@ class ApiController {
         .send("Something went wrong please try again later");
     }
   };
-  
 }
 
 module.exports = ApiController;

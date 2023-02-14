@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const createAdmin = require("./config/createAdmin");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+const MerchantRoutes = require("./merchant-routes");
 
 // create admin
 const result = createAdmin();
@@ -66,5 +67,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //routes
 AdminRoutes(app);
 AppRoutes(app);
+MerchantRoutes(app);
 
 module.exports = app;
